@@ -20,27 +20,22 @@ function Report() {
   //Start date 
   var startDate = new Date(new Date().getFullYear()-1, 0, 1);
   startDate.setHours(+1);
-  var startYear = startDate.toISOString().slice(0, 4);
+  var startYear = startDate.toISOString().slice(0, 4); /// YYYY
 
   //End date last day of last month
   var endDate=new Date(); // current date
   endDate.setDate(1); // going to 1st of the month
   endDate.setHours(-1); //1 hour back to get last day of last month
-  var endYear = endDate.toISOString().slice(0, 4);
+  var endYear = endDate.toISOString().slice(0, 4); /// YYYY
 
   const option = {
-      grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
       title: {
         text: 'INTK website sessions'
       },
       legend: {
         data: [startYear, endYear]
       },
+      color: ['#999999', '#BA5421'],
       tooltip: {
           trigger: "axis"
       },
@@ -57,12 +52,14 @@ function Report() {
           name: startYear,
           type: 'line',
           stack: 'Total',
+          showSymbol: false,
           data: []
         },
         {
           name: endYear,
           type: 'line',
           stack: 'Total',
+          showSymbol: false,
           data: []
         }
       ]
